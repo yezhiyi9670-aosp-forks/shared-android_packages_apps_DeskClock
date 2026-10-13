@@ -62,6 +62,13 @@ public class AnalogAppWidgetProvider extends AppWidgetProvider {
             final String packageName = context.getPackageName();
             final RemoteViews widget = new RemoteViews(packageName, R.layout.analog_appwidget);
 
+            // Follow the Launcher's workspace icon label color. When the Launcher decides the
+            // wallpaper supports dark (black) labels it tells the host that this widget sits on a
+            // light background, and the host then inflates this variant, which tints the dial and
+            // hands with the black the Launcher uses for its labels; otherwise the default
+            // layout's white is used. The decision is wallpaper based, not dark theme based.
+            widget.setLightBackgroundLayoutId(R.layout.analog_appwidget_light_bg);
+
             // Tapping on the widget opens the app (if not on the lock screen).
             if (Utils.isWidgetClickable(wm, widgetId)) {
                 final Intent openApp = new Intent(context, DeskClock.class);

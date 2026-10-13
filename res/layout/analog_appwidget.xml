@@ -14,10 +14,18 @@
      limitations under the License.
 -->
 
+<!-- Default variant: used when the Launcher draws white workspace icon labels, i.e. over a
+     wallpaper that is not bright enough for dark text. The "light background" counterpart is
+     analog_appwidget_light_bg.xml; the dial and hands are white images, so both variants tint
+     them explicitly. -->
+
 <AnalogClock xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/analog_appwidget"
     android:dial="@drawable/appwidget_clock_dial"
+    android:dialTint="@android:color/white"
     android:hand_hour="@drawable/appwidget_clock_hour"
+    android:hand_hourTint="@android:color/white"
     android:hand_minute="@drawable/appwidget_clock_minute"
+    android:hand_minuteTint="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
