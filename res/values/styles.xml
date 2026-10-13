@@ -177,6 +177,13 @@
         <item name="layout_constraintTop_toBottomOf">@id/timer_setup_time</item>
     </style>
 
+    <!-- Digital widget themes. The host selects between the "*Bg" variants through
+         RemoteViews.setLightBackgroundLayoutId(): "DarkBg" is used while the Launcher draws white
+         workspace icon labels, "LightBg" while it draws black ones (a wallpaper based decision,
+         not a dark theme one). Each variant therefore overrides its foreground roles with the
+         dynamic (Monet) tones that contrast with its background: the light tones of the Material
+         light scheme over the dark backgrounds, the dark tones of the Material dark scheme over
+         the light backgrounds. -->
     <style name="Theme.DeskClock.DigitalWidgetTransparentDarkBg" parent="Theme.Material3Expressive.DynamicColors.Light">
         <item name="appWidgetBackgroundTint">@android:color/transparent</item>
         <item name="appWidgetLabelTint">@color/widget_label_color</item>
@@ -193,6 +200,9 @@
         <item name="appWidgetTextAppearancePrimaryLabel">@style/TextAppearance.DigitalAppWidget.Label.TransparentLightBg</item>
         <item name="appWidgetTextAppearanceSecondary">@style/TextAppearance.DigitalAppWidget.WorldClock.TransparentLightBg</item>
         <item name="appWidgetTextAppearanceSecondaryLabel">@style/TextAppearance.DigitalAppWidget.WorldClock.Label.TransparentLightBg</item>
+        <!-- Light background: use the dark Monet tone of the primary container role so the clock
+             and the world clock list stay readable next to the black labels. -->
+        <item name="colorPrimaryContainer">@android:color/system_primary_container_dark</item>
     </style>
 
     <style name="Theme.DeskClock.DigitalWidgetDarkBg" parent="Theme.Material3Expressive.DynamicColors.Light">
@@ -202,6 +212,9 @@
         <item name="appWidgetTextAppearancePrimaryLabel">@style/TextAppearance.DigitalAppWidget.Label.DarkBg</item>
         <item name="appWidgetTextAppearanceSecondary">@style/TextAppearance.DigitalAppWidget.WorldClock.DarkBg</item>
         <item name="appWidgetTextAppearanceSecondaryLabel">@style/TextAppearance.DigitalAppWidget.WorldClock.Label.DarkBg</item>
+        <!-- Dark background: the secondary role is used by the world clock only, so point it at the
+             light Monet tone instead of the light scheme's dark one. -->
+        <item name="colorSecondary">@android:color/system_secondary_dark</item>
     </style>
 
     <style name="Theme.DeskClock.DigitalWidgetLightBg" parent="Theme.Material3Expressive.DynamicColors.Light">
@@ -211,6 +224,10 @@
         <item name="appWidgetTextAppearancePrimaryLabel">@style/TextAppearance.DigitalAppWidget.Label.LightBg</item>
         <item name="appWidgetTextAppearanceSecondary">@style/TextAppearance.DigitalAppWidget.WorldClock.LightBg</item>
         <item name="appWidgetTextAppearanceSecondaryLabel">@style/TextAppearance.DigitalAppWidget.WorldClock.Label.LightBg</item>
+        <!-- Light background: use the dark Monet tone of the primary container role, otherwise the
+             clock, the date/alarm labels and the alarm icon would stay light on a light
+             background. -->
+        <item name="colorPrimaryContainer">@android:color/system_primary_container_dark</item>
     </style>
 
     <style name="TextAppearance.DigitalAppWidget" parent="">
